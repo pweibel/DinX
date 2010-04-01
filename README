@@ -1,0 +1,12 @@
+TODO-Liste:
+1. Projektverwaltung: Projekte verwalten, User zuordnen
+2. Accountverwaltung: Account verwalten, alle zugeordneten Projekte anzeigen, alle zugeordnete Items anzeigen
+3. Product-Backlog Verwaltung: Items zu einem Projekt verwalten (AJAX-Funktionalität: Beim Hinzufügen ähnliche anzeigen, a la Stackoverflow)
+4. Sprint-Backlog Verwaltung/Sprint-Verwaltung: Sprints verwalten, Items zu Sprints zuordnen
+5. Scrumboard: Verwalten eines Sprintes, AJAX-Funktionalität: Drag&Drop
+6. Statistiken: Burndownrate und andere
+
+Weitere Features:
+- User followen
+- Projekte followen
+- Projektspezifische Stati
