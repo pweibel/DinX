@@ -1,0 +1,12 @@
+.gitignore
+DinX.suo
+DinX.Data/bin
+DinX.Data/obj
+DinX.Logic/bin
+DinX.Logic/obj
+DinX.Tests/bin
+DinX.Tests/obj
+DinX.Web/bin
+DinX.Web/obj
+DinX.4.5.resharper.user
+_ReSharper.DinX
