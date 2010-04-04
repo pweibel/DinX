@@ -80,9 +80,16 @@
   <ItemGroup>
     <Compile Include="PersistenceManager\PersistenceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\User.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DinX.Common\DinX.Common.csproj">
+      <Project>{8D23D475-4388-4CA3-9C11-16F558D0D86A}</Project>
+      <Name>DinX.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

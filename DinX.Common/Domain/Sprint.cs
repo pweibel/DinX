@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DinX.Logic.Domain
+namespace DinX.Common.Domain
 {
     public class Sprint
     {

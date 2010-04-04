@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinX.Logic", "DinX.Logic\Di
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinX.Data", "DinX.Data\DinX.Data.csproj", "{290D22C4-FDF7-41F6-B1E2-8FEC9FA22366}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinX.Common", "DinX.Common\DinX.Common.csproj", "{8D23D475-4388-4CA3-9C11-16F558D0D86A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{290D22C4-FDF7-41F6-B1E2-8FEC9FA22366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{290D22C4-FDF7-41F6-B1E2-8FEC9FA22366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{290D22C4-FDF7-41F6-B1E2-8FEC9FA22366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D23D475-4388-4CA3-9C11-16F558D0D86A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D23D475-4388-4CA3-9C11-16F558D0D86A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D23D475-4388-4CA3-9C11-16F558D0D86A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D23D475-4388-4CA3-9C11-16F558D0D86A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

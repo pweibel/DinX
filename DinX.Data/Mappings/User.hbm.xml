@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" namespace="DinX.Logic.Domain" assembly="DinX.Logic">
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" namespace="DinX.Common.Domain" assembly="DinX.Common">
   <class name="User" table="User">
     <id name="Id">
       <column name="UserId" sql-type="char(32)"/>

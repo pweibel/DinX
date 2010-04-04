@@ -86,12 +86,15 @@
     <Compile Include="Domain\UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Controllers\AccountControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DinX.Common\DinX.Common.csproj">
+      <Project>{8D23D475-4388-4CA3-9C11-16F558D0D86A}</Project>
+      <Name>DinX.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DinX.Data\DinX.Data.csproj">
       <Project>{290D22C4-FDF7-41F6-B1E2-8FEC9FA22366}</Project>
       <Name>DinX.Data</Name>

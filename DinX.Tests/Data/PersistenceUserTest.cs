@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using DinX.Common.Domain;
 using DinX.Data.PersistenceManager;
-using DinX.Logic.Domain;
+using DinX.Data.Repositories;
 using NHibernate;
 using NUnit.Framework;
 
@@ -31,12 +32,9 @@ namespace DinX.Tests.Data
             }
 
             //Assert
-            using(ISession session = PersistenceManager.OpenSession())
-            {
-                IQuery query = session.CreateQuery("FROM User");
-                IList<User> users = query.List<User>();
-                Assert.AreEqual(1, users.Count);
-            }
+            UserRepository repository = new UserRepository();
+            User user = repository.GetUserByName(u.Username);
+            Assert.IsNotNull(user);
         }
     }
 }

@@ -1,5 +1,8 @@
 .gitignore
 DinX.suo
+*.db
+DinX.Common/bin
+DinX.Common/obj
 DinX.Data/bin
 DinX.Data/obj
 DinX.Logic/bin

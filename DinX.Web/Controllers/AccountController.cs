@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Security.Principal;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Web.UI;
+using DinX.Common.Domain;
+using DinX.Logic.ServiceInterfaces;
+using DinX.Logic.Services;
 
 namespace DinX.Web.Controllers
 {
@@ -18,8 +17,7 @@ namespace DinX.Web.Controllers
         // This constructor is used by the MVC framework to instantiate the controller using
         // the default forms authentication and membership providers.
 
-        public AccountController()
-            : this(null, null)
+        public AccountController() : this(null, null)
         {
         }
 
@@ -310,42 +308,39 @@ namespace DinX.Web.Controllers
 
     public class AccountMembershipService : IMembershipService
     {
-        private MembershipProvider _provider;
+        private IUserService _service;
 
-        public AccountMembershipService()
-            : this(null)
+        public AccountMembershipService() : this(null)
         {
         }
 
-        public AccountMembershipService(MembershipProvider provider)
+        public AccountMembershipService(IUserService service)
         {
-            _provider = provider ?? Membership.Provider;
+            _service = service ?? new UserService();
         }
 
         public int MinPasswordLength
         {
             get
             {
-                return _provider.MinRequiredPasswordLength;
+                return UserService.MinRequiredPasswordLength;
             }
         }
 
         public bool ValidateUser(string userName, string password)
         {
-            return _provider.ValidateUser(userName, password);
+            return _service.ValidateUser(userName, password);
         }
 
         public MembershipCreateStatus CreateUser(string userName, string password, string email)
         {
-            MembershipCreateStatus status;
-            _provider.CreateUser(userName, password, email, null, null, true, null, out status);
-            return status;
+            User user = _service.CreateUser(userName, password, email);
+            return user == null ? MembershipCreateStatus.ProviderError : MembershipCreateStatus.Success;
         }
 
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
         {
-            MembershipUser currentUser = _provider.GetUser(userName, true /* userIsOnline */);
-            return currentUser.ChangePassword(oldPassword, newPassword);
+            return _service.ChangePassword(userName, oldPassword, newPassword);
         }
     }
 }
