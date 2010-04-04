@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using DinX.Common.Domain;
+using DinX.Common.Repositories;
 using DinX.Data.Repositories;
 using DinX.Logic.ServiceInterfaces;
 
@@ -16,8 +17,8 @@ namespace DinX.Logic.Services
             if(string.IsNullOrEmpty(strUsername)) throw new ArgumentNullException("strUsername");
             if(string.IsNullOrEmpty(strPassword)) throw new ArgumentNullException("strPassword");
 
-            UserRepository repository = new UserRepository();
-            User user = repository.GetUserByName(strUsername);
+            IUserRepository repository = new UserRepository();
+            User user = repository.GetByUsername(strUsername);
             
             if(user == null) return false;
 
@@ -29,8 +30,8 @@ namespace DinX.Logic.Services
             if(string.IsNullOrEmpty(strUsername)) throw new ArgumentNullException("strUsername");
             if(string.IsNullOrEmpty(strPassword)) throw new ArgumentNullException("strPassword");
 
-            UserRepository repository = new UserRepository();
-            User user = repository.GetUserByName(strUsername);
+            IUserRepository repository = new UserRepository();
+            User user = repository.GetByUsername(strUsername);
 
             if(user != null) throw new Exception("Username ist bereits vergeben.");
 
@@ -39,7 +40,7 @@ namespace DinX.Logic.Services
             user.Password = EncodePassword(strPassword);
             if(!string.IsNullOrEmpty(strEMail)) user.EMail = strEMail;
 
-            repository.Save(user);
+            repository.Add(user);
 
             return user;
         }
@@ -50,8 +51,8 @@ namespace DinX.Logic.Services
             if(string.IsNullOrEmpty(strOldPassword)) throw new ArgumentNullException("strOldPassword");
             if(string.IsNullOrEmpty(strNewPassword)) throw new ArgumentNullException("strNewPassword");
 
-            UserRepository repository = new UserRepository();
-            User user = repository.GetUserByName(strUsername);
+            IUserRepository repository = new UserRepository();
+            User user = repository.GetByUsername(strUsername);
 
             if(user == null) throw new Exception(string.Format("User mit Username {0} nicht gefunden.", strUsername));
 
@@ -59,7 +60,7 @@ namespace DinX.Logic.Services
 
             user.Password = EncodePassword(strNewPassword);
 
-            repository.Save(user);
+            repository.Update(user);
 
             return true;
         }
