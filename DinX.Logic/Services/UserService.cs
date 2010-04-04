@@ -3,8 +3,8 @@ using System.Security.Cryptography;
 using System.Text;
 using DinX.Common.Domain;
 using DinX.Common.Repositories;
+using DinX.Common.Services;
 using DinX.Data.Repositories;
-using DinX.Logic.ServiceInterfaces;
 
 namespace DinX.Logic.Services
 {

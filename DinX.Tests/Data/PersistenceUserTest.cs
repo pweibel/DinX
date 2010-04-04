@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using DinX.Common.Domain;
-using DinX.Data.PersistenceManager;
+﻿using DinX.Common.Domain;
+using DinX.Common.Repositories;
 using DinX.Data.Repositories;
-using NHibernate;
 using NUnit.Framework;
 
 namespace DinX.Tests.Data
@@ -22,19 +20,16 @@ namespace DinX.Tests.Data
             u.EMail = "hans.muster@test.ch";
 
             //Act
-            using(ISession session = PersistenceManager.OpenSession())
-            {
-                using (ITransaction transaction = session.BeginTransaction())
-                {
-                    session.Save(u);
-                    transaction.Commit();
-                }
-            }
+            IUserRepository repository = new UserRepository();
+            repository.Add(u);
 
             //Assert
-            UserRepository repository = new UserRepository();
-            User user = repository.GetUserByName(u.Username);
+            User user = repository.GetByUsername(u.Username);
             Assert.IsNotNull(user);
+            Assert.AreEqual(u.Username, user.Username);
+            Assert.AreEqual(u.Firstname, user.Firstname);
+            Assert.AreEqual(u.Lastname, user.Lastname);
+            Assert.AreEqual(u.EMail, user.EMail);
         }
     }
 }

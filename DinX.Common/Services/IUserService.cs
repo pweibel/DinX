@@ -1,6 +1,6 @@
 ﻿using DinX.Common.Domain;
 
-namespace DinX.Logic.ServiceInterfaces
+namespace DinX.Common.Services
 {
     public interface IUserService
     {

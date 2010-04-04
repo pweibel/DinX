@@ -4,7 +4,7 @@ using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Security;
 using DinX.Common.Domain;
-using DinX.Logic.ServiceInterfaces;
+using DinX.Common.Services;
 using DinX.Logic.Services;
 
 namespace DinX.Web.Controllers
