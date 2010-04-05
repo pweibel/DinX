@@ -122,7 +122,10 @@
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Views\Project\Create.aspx" />
+    <Content Include="Views\Project\Edit.aspx" />
     <Content Include="Views\Project\Index.aspx" />
+    <Content Include="Views\Project\Show.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Views\Account\ChangePassword.aspx" />

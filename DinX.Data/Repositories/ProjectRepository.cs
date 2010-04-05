@@ -36,6 +36,18 @@ namespace DinX.Data.Repositories
             }
         }
 
+        public Project GetProject(Guid projectId)
+        {
+            Project project;
+
+            using (ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            {
+                project = session.Get<Project>(projectId);
+            }
+
+            return project;
+        }
+
         public IList<Project> GetProjects()
         {
             IList<Project> projects;
