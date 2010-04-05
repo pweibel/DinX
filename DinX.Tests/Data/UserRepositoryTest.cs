@@ -6,10 +6,10 @@ using NUnit.Framework;
 namespace DinX.Tests.Data
 {
     [TestFixture]
-    public class PersistenceUserTest
+    public class UserRepositoryTest
     {
         [Test]
-        public void TestPersistUser()
+        public void TestAdd()
         {
             //Arrange
             User u = new User();

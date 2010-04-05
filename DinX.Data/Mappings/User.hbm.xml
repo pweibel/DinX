@@ -1,14 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" namespace="DinX.Common.Domain" assembly="DinX.Common">
   <class name="User" table="User">
-    <id name="Id">
-      <column name="UserId" sql-type="char(32)"/>
-      <generator class="uuid.hex" />
+    <id name="Id" column="UserId">
+      <generator class="guid" />
     </id>
     <property name="Username" />
     <property name="Password" />
     <property name="Firstname" />
     <property name="Lastname" />
     <property name="EMail" />
+    <bag name="Projects">
+      <key column="ProjectId"/>
+      <one-to-many class="DinX.Common.Domain.Project"/>
+    </bag>
+    <bag name="Tasks">
+      <key column="TaskId"/>
+      <one-to-many class="DinX.Common.Domain.Task"/>
+    </bag>
   </class>
 </hibernate-mapping>

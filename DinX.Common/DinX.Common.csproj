@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Item.cs" />
+    <Compile Include="Domain\Task.cs" />
     <Compile Include="Domain\Project.cs" />
     <Compile Include="Domain\Sprint.cs" />
     <Compile Include="Domain\User.cs" />

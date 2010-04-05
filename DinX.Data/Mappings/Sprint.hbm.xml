@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" namespace="DinX.Common.Domain" assembly="DinX.Common">
+  <class name="Sprint" table="Sprint">
+    <id name="Id" column="SprintId">
+      <generator class="guid" />
+    </id>
+    <property name="Name" />
+    <property name="Start" />
+    <property name="End" />
+    <many-to-one name="Project" class="DinX.Common.Domain.Project" />
+    <bag name="SprintBacklog">
+      <key column="TaskId"/>
+      <one-to-many class="DinX.Common.Domain.Task" />
+    </bag>
+  </class>
+</hibernate-mapping>

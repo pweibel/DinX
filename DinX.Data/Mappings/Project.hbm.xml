@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" namespace="DinX.Common.Domain" assembly="DinX.Common">
+  <class name="Project" table="Project">
+    <id name="Id" column="ProjectId">
+      <generator class="guid" />
+    </id>
+    <property name="Name" />
+    <many-to-one name="Owner" class="DinX.Common.Domain.User" cascade="All"/>
+    <bag name="Members">
+      <key column="UserId"/>
+      <one-to-many class="DinX.Common.Domain.User" />
+    </bag>
+    <bag name="ProductBacklog">
+      <key column="TaskId"/>
+      <one-to-many class="DinX.Common.Domain.Task"/>
+    </bag>
+    <bag name="Sprints">
+      <key column="SprintId"/>
+      <one-to-many class="DinX.Common.Domain.Sprint"/>
+    </bag>
+  </class>
+</hibernate-mapping>
