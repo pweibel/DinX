@@ -5,16 +5,16 @@
       <generator class="guid" />
     </id>
     <property name="Name" not-null="true"/>
-    <many-to-one name="Owner" class="DinX.Common.Domain.User" cascade="All" not-null="true"/>
-    <bag name="Members" table="ProjectMember">
+    <many-to-one name="Owner" class="DinX.Common.Domain.User" cascade="All" not-null="true" lazy="false"/>
+    <bag name="Members" table="ProjectMember" lazy="false">
       <key column="ProjectId"/>
       <many-to-many class="DinX.Common.Domain.User" column="UserId"/>
     </bag>
-    <bag name="ProductBacklog">
+    <bag name="ProductBacklog" lazy="true">
       <key column="TaskId"/>
       <one-to-many class="DinX.Common.Domain.Task"/>
     </bag>
-    <bag name="Sprints">
+    <bag name="Sprints" lazy="true">
       <key column="SprintId"/>
       <one-to-many class="DinX.Common.Domain.Sprint"/>
     </bag>

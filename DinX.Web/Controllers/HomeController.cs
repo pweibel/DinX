@@ -7,7 +7,14 @@ namespace DinX.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewData["Message"] = "Welcome to ASP.NET MVC!";
+            if(this.Request.IsAuthenticated)
+            {
+                ViewData["Message"] = string.Format("Welcome {0} to ASP.NET MVC!", this.User.Identity.Name);
+            }
+            else
+            {
+                ViewData["Message"] = "Welcome to ASP.NET MVC!";
+            }
 
             return View();
         }

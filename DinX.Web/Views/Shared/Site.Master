@@ -19,6 +19,7 @@
             <tr>
                 <td id="menu">
                     <div class="menuitem"><%= Html.ActionLink("Home", "Index", "Home")%></div>
+                    <div class="menuitem"><%= Html.ActionLink("Projects", "Index", "Project")%></div>
                     <div class="menuitem"><%= Html.ActionLink("About", "About", "Home")%></div>
                 </td>
                 <td id="content">
