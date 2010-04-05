@@ -4,18 +4,18 @@
     <id name="Id" column="UserId">
       <generator class="guid" />
     </id>
-    <property name="Username" />
-    <property name="Password" />
+    <property name="Username" not-null="true"/>
+    <property name="Password" not-null="true"/>
     <property name="Firstname" />
     <property name="Lastname" />
     <property name="EMail" />
-    <bag name="Projects">
-      <key column="ProjectId"/>
-      <one-to-many class="DinX.Common.Domain.Project"/>
+    <bag name="Projects" table="ProjectMember">
+      <key column="UserId"/>
+      <many-to-many class="DinX.Common.Domain.Project" column="ProjectId"/>
     </bag>
-    <bag name="Tasks">
-      <key column="TaskId"/>
-      <one-to-many class="DinX.Common.Domain.Task"/>
+    <bag name="Tasks" table="TaskMember">
+      <key column="UserId"/>
+      <many-to-many class="DinX.Common.Domain.Task" column="TaskId"/>
     </bag>
   </class>
 </hibernate-mapping>

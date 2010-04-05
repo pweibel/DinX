@@ -4,10 +4,10 @@
     <id name="Id" column="SprintId">
       <generator class="guid" />
     </id>
-    <property name="Name" />
-    <property name="Start" />
-    <property name="End" />
-    <many-to-one name="Project" class="DinX.Common.Domain.Project" />
+    <property name="Name" not-null="true"/>
+    <property name="Start" not-null="true"/>
+    <property name="End" not-null="true"/>
+    <many-to-one name="Project" class="DinX.Common.Domain.Project" column="ProjectId" not-null="true"/>
     <bag name="SprintBacklog">
       <key column="TaskId"/>
       <one-to-many class="DinX.Common.Domain.Task" />

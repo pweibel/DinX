@@ -4,12 +4,13 @@
     <id name="Id" column="TaskId">
       <generator class="guid" />
     </id>
-    <property name="Title" />
+    <property name="Title" not-null="true" />
     <property name="Description" />
-    <many-to-one name="Project" class="DinX.Common.Domain.Project"/>
-    <bag name="Users">
-      <key column="UserId"/>
-      <one-to-many class="DinX.Common.Domain.User" />
+    <many-to-one name="Project" class="DinX.Common.Domain.Project" column="ProjectId" not-null="true"/>
+    <many-to-one name="Sprint" class="DinX.Common.Domain.Sprint" column="SprintId"/>
+    <bag name="Users" table="TaskMember">
+      <key column="TaskId"/>
+      <many-to-many class="DinX.Common.Domain.User" column="UserId"/>
     </bag>
   </class>
 </hibernate-mapping>

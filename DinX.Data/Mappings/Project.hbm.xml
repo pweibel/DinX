@@ -4,11 +4,11 @@
     <id name="Id" column="ProjectId">
       <generator class="guid" />
     </id>
-    <property name="Name" />
-    <many-to-one name="Owner" class="DinX.Common.Domain.User" cascade="All"/>
-    <bag name="Members">
-      <key column="UserId"/>
-      <one-to-many class="DinX.Common.Domain.User" />
+    <property name="Name" not-null="true"/>
+    <many-to-one name="Owner" class="DinX.Common.Domain.User" cascade="All" not-null="true"/>
+    <bag name="Members" table="ProjectMember">
+      <key column="ProjectId"/>
+      <many-to-many class="DinX.Common.Domain.User" column="UserId"/>
     </bag>
     <bag name="ProductBacklog">
       <key column="TaskId"/>
