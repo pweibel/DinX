@@ -9,19 +9,48 @@ namespace DinX.Logic.Services
 {
     public class ProjectService : IProjectService
     {
+        #region Fields
+        private IUserRepository _userRepository;
+        private IProjectRepository _projectRepository;
+        #endregion
+
+        #region Properties
+        public IUserRepository UserRepository
+        {
+            get
+            {
+                return _userRepository ?? (_userRepository = new UserRepository());
+            }
+            set
+            {
+                _userRepository = value;
+            }
+        }
+
+        public IProjectRepository ProjectRepository
+        {
+            get
+            {
+                return _projectRepository ?? (_projectRepository = new ProjectRepository());
+            }
+            set
+            {
+                _projectRepository = value;
+            }
+        }
+        #endregion
+
         public bool CreateProject(Project project, string strUsername)
         {
             if(project == null) throw new ArgumentNullException("project");
 
             if(!string.IsNullOrEmpty(strUsername))
             {
-                IUserRepository userRepository = new UserRepository();
-                User user = userRepository.GetByUsername(strUsername);
+                User user = this.UserRepository.GetByUsername(strUsername);
                 project.Owner = user;
             }
 
-            IProjectRepository repository = new ProjectRepository();
-            repository.Add(project);
+            this.ProjectRepository.Add(project);
 
             return true;
         }
@@ -32,27 +61,23 @@ namespace DinX.Logic.Services
 
             if (!string.IsNullOrEmpty(strUsername))
             {
-                IUserRepository userRepository = new UserRepository();
-                User user = userRepository.GetByUsername(strUsername);
+                User user = this.UserRepository.GetByUsername(strUsername);
                 project.Owner = user;
             }
 
-            IProjectRepository repository = new ProjectRepository();
-            repository.Update(project);
+            this.ProjectRepository.Update(project);
 
             return true;
         }
 
         public Project GetProject(Guid projectId)
         {
-            IProjectRepository repository = new ProjectRepository();
-            return repository.GetProject(projectId);
+            return this.ProjectRepository.GetProject(projectId);
         }
 
         public IList<Project> GetProjects()
         {
-            IProjectRepository repository = new ProjectRepository();
-            return repository.GetProjects();
+            return this.ProjectRepository.GetProjects();
         }
 
         public IList<Project> GetProjectsByOwner(User user)

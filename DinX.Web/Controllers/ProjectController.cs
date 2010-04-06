@@ -9,19 +9,31 @@ namespace DinX.Web.Controllers
 {
     public class ProjectController : Controller
     {
+        #region Fields
+        private IProjectService _projectService;
+        #endregion
+
+        #region Properties
+        public IProjectService ProjectService
+        {
+            get
+            {
+                return _projectService ?? (_projectService = new ProjectService());
+            }
+        }
+        #endregion
+
         public ActionResult Index()
         {
-            IProjectService service = new ProjectService();
             ProjectViewModel vmProject = new ProjectViewModel();
-            vmProject.Projects = service.GetProjects();
+            vmProject.Projects = this.ProjectService.GetProjects();
             
             return View(vmProject);
         }
 
         public ActionResult Show(Guid id)
         {
-            IProjectService service = new ProjectService();
-            Project project = service.GetProject(id);
+            Project project = this.ProjectService.GetProject(id);
 
             return View(project);
         }
@@ -35,8 +47,7 @@ namespace DinX.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(Project project)
         {
-            IProjectService service = new ProjectService();
-            if(service.CreateProject(project, this.User.Identity.Name))
+            if(this.ProjectService.CreateProject(project, this.User.Identity.Name))
             {
                 return RedirectToAction("Index");
             }
@@ -55,8 +66,7 @@ namespace DinX.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(Project project)
         {
-            IProjectService service = new ProjectService();
-            if(service.EditProject(project, this.User.Identity.Name))
+            if(this.ProjectService.EditProject(project, this.User.Identity.Name))
             {
                 return RedirectToAction("Show", new { id = project.Id });
             }

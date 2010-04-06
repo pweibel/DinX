@@ -10,15 +10,34 @@ namespace DinX.Logic.Services
 {
     public class UserService : IUserService
     {
+        #region Fields
+        private IUserRepository _userRepository;
+        #endregion
+
+        #region Statics
         public static readonly int MinRequiredPasswordLength = 6;
-        
+        #endregion
+
+        #region Properties
+        public IUserRepository UserRepository
+        {
+            get
+            {
+                return _userRepository ?? (_userRepository = new UserRepository());
+            }
+            set
+            {
+                _userRepository = value;
+            }
+        }
+        #endregion
+
         public bool ValidateUser(string strUsername, string strPassword)
         {
             if(string.IsNullOrEmpty(strUsername)) throw new ArgumentNullException("strUsername");
             if(string.IsNullOrEmpty(strPassword)) throw new ArgumentNullException("strPassword");
 
-            IUserRepository repository = new UserRepository();
-            User user = repository.GetByUsername(strUsername);
+            User user = this.UserRepository.GetByUsername(strUsername);
             
             if(user == null) return false;
 
@@ -30,8 +49,7 @@ namespace DinX.Logic.Services
             if(string.IsNullOrEmpty(strUsername)) throw new ArgumentNullException("strUsername");
             if(string.IsNullOrEmpty(strPassword)) throw new ArgumentNullException("strPassword");
 
-            IUserRepository repository = new UserRepository();
-            User user = repository.GetByUsername(strUsername);
+            User user = this.UserRepository.GetByUsername(strUsername);
 
             if(user != null) throw new Exception("Username ist bereits vergeben.");
 
@@ -40,7 +58,7 @@ namespace DinX.Logic.Services
             user.Password = EncodePassword(strPassword);
             if(!string.IsNullOrEmpty(strEMail)) user.EMail = strEMail;
 
-            repository.Add(user);
+            this.UserRepository.Add(user);
 
             return user;
         }
@@ -51,8 +69,7 @@ namespace DinX.Logic.Services
             if(string.IsNullOrEmpty(strOldPassword)) throw new ArgumentNullException("strOldPassword");
             if(string.IsNullOrEmpty(strNewPassword)) throw new ArgumentNullException("strNewPassword");
 
-            IUserRepository repository = new UserRepository();
-            User user = repository.GetByUsername(strUsername);
+            User user = this.UserRepository.GetByUsername(strUsername);
 
             if(user == null) throw new Exception(string.Format("User mit Username {0} nicht gefunden.", strUsername));
 
@@ -60,7 +77,7 @@ namespace DinX.Logic.Services
 
             user.Password = EncodePassword(strNewPassword);
 
-            repository.Update(user);
+            this.UserRepository.Update(user);
 
             return true;
         }
