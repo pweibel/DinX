@@ -38,6 +38,7 @@ namespace DinX.Web.Controllers
             return View(project);
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             return View();
