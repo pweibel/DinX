@@ -12,7 +12,7 @@
 
         <div id="header">
             <div id="logindisplay"><% Html.RenderPartial("AccountControl"); %></div> 
-            <span id="title">DinX</span><span id="search"><% Html.RenderPartial("SearchControl"); %></span>
+            <div id="title">DinX</div><div id="search"><% Html.RenderPartial("SearchControl"); %></div>
         </div>
             
         <table id="main">
