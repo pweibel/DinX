@@ -13,4 +13,8 @@ DinX.Web/App_Data
 DinX.Web/bin
 DinX.Web/obj
 DinX.4.5.resharper.user
+<<<<<<< HEAD
 _ReSharper.DinX
+=======
+_ReSharper.DinX
+>>>>>>> 4113c2d... Changed: Table Layout --> Div Layout, according to GoogleReader
