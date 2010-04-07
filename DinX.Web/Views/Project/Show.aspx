@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Project <%= Html.Encode(Model.Name) %> Dashboard</h2>
+    <h2 id="pagetitle"><%= Html.Encode(Model.Name) %> Dashboard</h2>
 
     <fieldset>
         <legend>Info</legend>
@@ -17,6 +17,7 @@
     </fieldset>
     <p>
         <%= Html.ActionLink("Edit", "Edit", new { id= Model.Id }) %> |
+        <%= Html.ActionLink("Show current sprint", "Index", "Sprint", new { id= Model.Id }, null) %> |
         <%= Html.ActionLink("Back to projects", "Index") %>
     </p>
 

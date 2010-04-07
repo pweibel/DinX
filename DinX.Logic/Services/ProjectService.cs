@@ -12,6 +12,7 @@ namespace DinX.Logic.Services
         #region Fields
         private IUserRepository _userRepository;
         private IProjectRepository _projectRepository;
+    	private ISprintRepository _sprintRepository;
         #endregion
 
         #region Properties
@@ -38,7 +39,19 @@ namespace DinX.Logic.Services
                 _projectRepository = value;
             }
         }
-        #endregion
+
+		public ISprintRepository SprintRepository
+		{
+			get
+			{
+				return _sprintRepository ?? (_sprintRepository = new SprintRepository());
+			}
+			set
+			{
+				_sprintRepository = value;
+			}
+		}
+		#endregion
 
         public bool CreateProject(Project project, string strUsername)
         {
@@ -94,5 +107,10 @@ namespace DinX.Logic.Services
         {
             throw new NotImplementedException();
         }
+
+		public Sprint GetCurrentSprint(Project project)
+    	{
+			return this.SprintRepository.GetCurrentSprint(project);
+    	}
     }
 }

@@ -13,5 +13,6 @@ namespace DinX.Common.Services
         IList<Project> GetProjectsByOwner(User user);
         IList<Sprint> GetSprintsByProject(Project project);
         IList<Task> GetProductBacklogByProject(Project project);
+		Sprint GetCurrentSprint(Project project);
     }
 }

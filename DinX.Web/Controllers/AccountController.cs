@@ -9,35 +9,60 @@ using DinX.Logic.Services;
 
 namespace DinX.Web.Controllers
 {
-
     [HandleError]
     public class AccountController : Controller
-    {
-        public AccountController() : this(null, null)
-        {
-        }
+	{
+		#region Fields
+		private IUserService _userService;
+		#endregion
 
-        public AccountController(IFormsAuthentication formsAuth, IMembershipService service)
-        {
-            FormsAuth = formsAuth ?? new FormsAuthenticationService();
-            MembershipService = service ?? new AccountMembershipService();
-        }
+		#region Properties
+    	public IUserService UserService
+    	{
+    		get
+    		{
+    			return _userService ?? (_userService = new UserService());
+    		}
+			set
+			{
+				_userService = value;
+			}
+    	}
 
-        public IFormsAuthentication FormsAuth
-        {
-            get;
-            private set;
-        }
+		public IFormsAuthentication FormsAuth
+		{
+			get;
+			private set;
+		}
 
-        public IMembershipService MembershipService
-        {
-            get;
-            private set;
-        }
+		public IMembershipService MembershipService
+		{
+			get;
+			private set;
+		}
+		#endregion
+
+		#region Constructors
+    	public AccountController() : this(null, null)
+    	{
+    	}
+
+    	public AccountController(IFormsAuthentication formsAuth, IMembershipService service)
+    	{
+    		FormsAuth = formsAuth ?? new FormsAuthenticationService();
+    		MembershipService = service ?? new AccountMembershipService();
+    	}
+    	#endregion
+
+		public ActionResult Index()
+		{
+			User user = this.UserService.GetByUsername(this.User.Identity.Name);
+
+			return View(user);
+		}
 
         public ActionResult LogOn()
         {
-
             return View();
         }
 
@@ -65,7 +90,6 @@ namespace DinX.Web.Controllers
 
         public ActionResult LogOff()
         {
-
             FormsAuth.SignOut();
 
             return RedirectToAction("Index", "Home");
@@ -73,7 +97,6 @@ namespace DinX.Web.Controllers
 
         public ActionResult Register()
         {
-
             ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
 
             return View();
@@ -108,7 +131,6 @@ namespace DinX.Web.Controllers
         [Authorize]
         public ActionResult ChangePassword()
         {
-
             ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
 
             return View();
@@ -120,7 +142,6 @@ namespace DinX.Web.Controllers
             Justification = "Exceptions result in password not being changed.")]
         public ActionResult ChangePassword(string currentPassword, string newPassword, string confirmPassword)
         {
-
             ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
 
             if (!ValidateChangePassword(currentPassword, newPassword, confirmPassword))

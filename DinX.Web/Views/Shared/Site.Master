@@ -11,8 +11,8 @@
     <div id="page">
 
         <div id="header">
-            <div id="logindisplay"><% Html.RenderPartial("LogOnUserControl"); %></div> 
-            <div id="title">DinX</div>
+            <div id="logindisplay"><% Html.RenderPartial("AccountControl"); %></div> 
+            <span id="title">DinX</span><span id="search"><% Html.RenderPartial("SearchControl"); %></span>
         </div>
             
         <table id="main">

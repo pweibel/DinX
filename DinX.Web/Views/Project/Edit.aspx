@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Edit project <%= Html.Encode(Model.Name) %></h2>
+    <h2 id="pagetitle">Edit project <%= Html.Encode(Model.Name) %></h2>
 
     <% using (Html.BeginForm()) {%>
         <%= Html.ValidationSummary(true) %>

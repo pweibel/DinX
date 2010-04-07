@@ -32,7 +32,14 @@ namespace DinX.Logic.Services
         }
         #endregion
 
-        public bool ValidateUser(string strUsername, string strPassword)
+		public User GetByUsername(string strUsername)
+    	{
+			if(string.IsNullOrEmpty(strUsername)) throw new ArgumentNullException("strUsername");
+
+			return this.UserRepository.GetByUsername(strUsername);
+		}
+
+    	public bool ValidateUser(string strUsername, string strPassword)
         {
             if(string.IsNullOrEmpty(strUsername)) throw new ArgumentNullException("strUsername");
             if(string.IsNullOrEmpty(strPassword)) throw new ArgumentNullException("strPassword");

@@ -54,6 +54,11 @@ a:active
 	border: none;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 32px !important;
+	text-align: left;
+}
+
+#search
+{
 }
 
 #main
@@ -88,6 +93,35 @@ a:active
 	text-align: left;
 }
 
+
+/* Login  
+----------------------------------------------------------*/
+#logindisplay
+{
+	text-align: right;
+	color: #000000;
+	font-size: 10pt;
+	margin-bottom: 10px;
+}
+
+#logindisplay a:link
+{
+	color: #000000;
+	text-decoration: underline;
+}
+
+#logindisplay a:visited
+{
+	color: #000000;
+	text-decoration: underline;
+}
+
+#logindisplay a:hover
+{
+	color: #000000;
+	text-decoration: none;
+}
+
 /* MISC  
 ----------------------------------------------------------*/
 .clear
@@ -115,31 +149,4 @@ a:active
 {
     font-weight: bold;
     color: #ff0000;
-}
-
-/* Login  
-----------------------------------------------------------*/
-#logindisplay
-{
-	text-align: right;
-	color: #000000;
-	font-size: 10pt;
-}
-
-#logindisplay a:link
-{
-	color: #000000;
-	text-decoration: underline;
-}
-
-#logindisplay a:visited
-{
-	color: #000000;
-	text-decoration: underline;
-}
-
-#logindisplay a:hover
-{
-	color: #000000;
-	text-decoration: none;
 }
