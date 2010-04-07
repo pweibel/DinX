@@ -15,18 +15,17 @@
             <div id="title">DinX</div><div id="search"><% Html.RenderPartial("SearchControl"); %></div>
         </div>
             
-        <table id="main">
-            <tr>
-                <td id="menu">
-                    <div class="menuitem"><%= Html.ActionLink("Home", "Index", "Home")%></div>
-                    <div class="menuitem"><%= Html.ActionLink("Projects", "Index", "Project")%></div>
-                    <div class="menuitem"><%= Html.ActionLink("About", "About", "Home")%></div>
-                </td>
-                <td id="content">
-                    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-                </td>
-            </tr>
-        </table>
+            
+        <div id="menu">
+            <div class="menuitem"><%= Html.ActionLink("Home", "Index", "Home")%></div>
+            <div class="menuitem"><%= Html.ActionLink("Projects", "Index", "Project")%></div>
+            <div class="menuitem"><%= Html.ActionLink("About", "About", "Home")%></div>
+        </div>
+            
+        <div id="content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        
         <div id="footer"/>
     </div>
 </body>

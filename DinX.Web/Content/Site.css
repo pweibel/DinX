@@ -79,11 +79,13 @@ a:active
 {
 	width: 200px;
 	vertical-align: top;
+	float: left;
 }
 
 #content
 {
 	vertical-align: top;
+	margin-left: 200px;
 }
 
 #pagetitle
