@@ -96,7 +96,7 @@
   <ItemGroup>
     <Compile Include="Data\UserRepositoryTest.cs" />
     <Compile Include="Domain\UserTest.cs" />
-    <Compile Include="ProjectRepositoryTest.cs" />
+    <Compile Include="Data\ProjectRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

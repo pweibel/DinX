@@ -2,7 +2,7 @@
 using DinX.Common.Domain;
 using NUnit.Framework;
 
-namespace DinX.Tests
+namespace DinX.Tests.Data
 {
     [TestFixture]
     public class ProjectRepositoryTest
