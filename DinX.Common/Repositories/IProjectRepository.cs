@@ -11,5 +11,7 @@ namespace DinX.Common.Repositories
         Project GetProject(Guid projectId);
         IList<Project> GetProjects();
         IList<Project> GetProjectsByOwner(User user);
+        Project LoadProductBacklog(Project project);
+        Project LoadSprints(Project project);
     }
 }

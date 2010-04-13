@@ -8,7 +8,7 @@
     <property name="Start" not-null="true"/>
     <property name="End" not-null="true"/>
     <many-to-one name="Project" class="DinX.Common.Domain.Project" column="ProjectId" not-null="true"/>
-    <bag name="SprintBacklog">
+    <bag name="SprintBacklog" inverse="true">
       <key column="TaskId"/>
       <one-to-many class="DinX.Common.Domain.Task" />
     </bag>

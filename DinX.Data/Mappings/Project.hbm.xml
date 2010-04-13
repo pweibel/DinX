@@ -10,11 +10,11 @@
       <key column="ProjectId"/>
       <many-to-many class="DinX.Common.Domain.User" column="UserId"/>
     </bag>
-    <bag name="ProductBacklog" lazy="true">
+    <bag name="ProductBacklog" inverse="true" cascade="all-delete-orphan">
       <key column="TaskId"/>
       <one-to-many class="DinX.Common.Domain.Task"/>
     </bag>
-    <bag name="Sprints" lazy="true">
+    <bag name="Sprints" inverse="true" cascade="all-delete-orphan">
       <key column="SprintId"/>
       <one-to-many class="DinX.Common.Domain.Sprint"/>
     </bag>
