@@ -44,7 +44,6 @@ namespace DinX.Data.Repositories
             {
                 project = session.Get<Project>(projectId);
             }
-
             return project;
         }
 

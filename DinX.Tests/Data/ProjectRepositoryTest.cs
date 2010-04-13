@@ -21,6 +21,7 @@ namespace DinX.Tests.Data
             u.EMail = "hans.muster@firma.ch";
             u.Password = "1234";
             p.Owner = u;
+            p.Members.Add(u);
             Task t1 = new Task();
             t1.Title = "Task 1";
             t1.Project = p;
@@ -43,6 +44,7 @@ namespace DinX.Tests.Data
             Assert.IsNotNull(p2);
             Assert.AreEqual(p.Name, p2.Name);
             Assert.AreEqual(p2.Owner.Username, u.Username);
+            Assert.AreEqual(1, p2.Members.Count);
             Assert.AreEqual(3, p2.ProductBacklog.Count);
         }
     }
