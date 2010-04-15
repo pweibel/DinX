@@ -77,15 +77,24 @@ a:active
 
 #menu
 {
-	width: 200px;
+	width: 100%;
 	vertical-align: top;
-	float: left;
+	display: block;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border-top: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+#menu a
+{
+	text-decoration: none;
 }
 
 #content
 {
 	vertical-align: top;
-	margin-left: 200px;
+	margin-top: 10px;
 }
 
 #pagetitle
@@ -102,6 +111,7 @@ a:active
 .menuitem
 {
 	text-align: left;
+	display: inline;
 }
 
 

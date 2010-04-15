@@ -9,7 +9,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2 id="pagetitle">Projects</h2>
-    <%= Html.ActionLink("New Project", "Create", "Project")%>
+    <p>
+        <%= Html.ActionLink("New Project", "Create", "Project")%>
+    </p>
     <ul>
     <% foreach(Project project in this.Model.Projects){%>
         <li><%= Html.ActionLink(project.Name, "Show", new { id = project.Id}) %></li>
