@@ -29,6 +29,10 @@ a:active
     color: #12eb87;
 }
 
+fieldset
+{
+	border: solid 1px #DDDDDD;
+}
 
 /* Classes   
 ----------------------------------------------------------*/
@@ -59,10 +63,17 @@ a:active
 	width: 200px;
 }
 
+#logo
+{
+	float: left;
+	margin-right: 30px;
+	display: block;
+}
+
 #search
 {
 	float: left;
-	margin-top: 10px;
+	margin-top: 15px;
 }
 
 #search input
@@ -122,7 +133,6 @@ a:active
 	text-align: right;
 	color: #000000;
 	font-size: 10pt;
-	margin-bottom: 10px;
 }
 
 #logindisplay a:link

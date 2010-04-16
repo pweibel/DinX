@@ -12,7 +12,7 @@
 
         <div id="header">
             <div id="logindisplay"><% Html.RenderPartial("AccountControl"); %></div> 
-            <div id="title">DinX</div><div id="search"><% Html.RenderPartial("SearchControl"); %></div>
+            <img id="logo" alt="DinX" src="../../Content/Images/DinXLogo.png" /><div id="search"><% Html.RenderPartial("SearchControl"); %></div>
         </div>
             
         <div id="menu">
