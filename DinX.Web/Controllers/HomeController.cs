@@ -9,11 +9,11 @@ namespace DinX.Web.Controllers
         {
             if(this.Request.IsAuthenticated)
             {
-                ViewData["Message"] = string.Format("Welcome {0} to ASP.NET MVC!", this.User.Identity.Name);
+                ViewData["Message"] = string.Format("Welcome {0} to DinX!", this.User.Identity.Name);
             }
             else
             {
-                ViewData["Message"] = "Welcome to ASP.NET MVC!";
+                ViewData["Message"] = "Welcome to DinX!";
             }
 
             return View();

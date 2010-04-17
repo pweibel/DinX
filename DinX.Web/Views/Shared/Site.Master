@@ -9,10 +9,13 @@
 
 <body>
     <div id="page">
-
+		<div id="topheader">
+	        <div id="logindisplay"><% Html.RenderPartial("AccountControl"); %></div> 
+		</div>
+		<br />
         <div id="header">
-            <div id="logindisplay"><% Html.RenderPartial("AccountControl"); %></div> 
-            <img id="logo" alt="DinX" src="../../Content/Images/DinXLogo.png" /><div id="search"><% Html.RenderPartial("SearchControl"); %></div>
+            <a href="<%= Url.Action("Index", "Home") %>"><img id="logo" alt="DinX" src="../../Content/Images/DinXLogo.png" /></a>
+            <div id="search"><% Html.RenderPartial("SearchControl"); %></div>
         </div>
             
         <div id="menu">
