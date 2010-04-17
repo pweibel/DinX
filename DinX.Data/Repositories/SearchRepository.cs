@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using DinX.Common.Domain;
 using DinX.Common.Repositories;
+using DinX.Data.Helper;
 using NHibernate;
 using NHibernate.Search;
 

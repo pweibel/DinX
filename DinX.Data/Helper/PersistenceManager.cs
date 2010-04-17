@@ -4,7 +4,7 @@ using NHibernate.Cfg;
 using NHibernate.Event;
 using NHibernate.Search.Event;
 
-namespace DinX.Data
+namespace DinX.Data.Helper
 {
     public class PersistenceManager
     {

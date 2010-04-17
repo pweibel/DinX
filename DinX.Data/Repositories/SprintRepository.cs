@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using DinX.Common.Domain;
 using DinX.Common.Repositories;
-
+using DinX.Data.Helper;
 using NHibernate;
 using NHibernate.Criterion;
 
