@@ -33,7 +33,7 @@ namespace DinX.Tests.Search
             p.ProductBacklog.Add(t2);
             p.ProductBacklog.Add(t3);
             IProjectRepository projectRepository = new ProjectRepository();
-            projectRepository.Add(p);
+            projectRepository.SaveOrUpdate(p);
 
             //Act
             IList result = repository.Search("Title:Schreiben*");

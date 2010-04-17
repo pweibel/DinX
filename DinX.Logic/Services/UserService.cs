@@ -68,7 +68,7 @@ namespace DinX.Logic.Services
 
             if(!string.IsNullOrEmpty(strEMail)) user.EMail = strEMail;
 
-            this.UserRepository.Add(user);
+            this.UserRepository.SaveOrUpdate(user);
 
             return user;
         }
@@ -87,7 +87,7 @@ namespace DinX.Logic.Services
 
             user.Password = EncodePassword(strNewPassword);
 
-            this.UserRepository.Update(user);
+            this.UserRepository.SaveOrUpdate(user);
 
             return true;
         }

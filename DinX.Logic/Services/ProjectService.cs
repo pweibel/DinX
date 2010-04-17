@@ -63,7 +63,7 @@ namespace DinX.Logic.Services
                 project.Owner = user;
             }
 
-            this.ProjectRepository.Add(project);
+            this.ProjectRepository.SaveOrUpdate(project);
 
             return true;
         }
@@ -78,7 +78,7 @@ namespace DinX.Logic.Services
                 project.Owner = user;
             }
 
-            this.ProjectRepository.Update(project);
+            this.ProjectRepository.SaveOrUpdate(project);
 
             return true;
         }

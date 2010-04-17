@@ -9,7 +9,7 @@ namespace DinX.Data.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public void Add(User user)
+        public void SaveOrUpdate(User user)
         {
             if(user == null) throw new ArgumentNullException("user");
 
@@ -17,13 +17,13 @@ namespace DinX.Data.Repositories
             {
                 using(ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Save(user);
+                    session.SaveOrUpdate(user);
                     transaction.Commit();
                 }
             }
         }
 
-        public void Update(User user)
+        public void Delete(User user)
         {
             if(user == null) throw new ArgumentNullException("user");
 
@@ -31,7 +31,7 @@ namespace DinX.Data.Repositories
             {
                 using(ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Update(user);
+                    session.Delete(user);
                     transaction.Commit();
                 }
             }
@@ -46,7 +46,7 @@ namespace DinX.Data.Repositories
             {
                 /*
                 ICriteria criteria = session.CreateCriteria(typeof(User))
-                            .Add(Restrictions.Eq("Username", strUsername));
+                            .SaveOrUpdate(Restrictions.Eq("Username", strUsername));
 
                 IList<User> users = criteria.List<User>();
                 if(users.Count == 1) user = users[0];

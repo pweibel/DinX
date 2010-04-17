@@ -21,7 +21,7 @@ namespace DinX.Tests.Data
 
             //Act
             IUserRepository repository = new UserRepository();
-            repository.Add(u);
+            repository.SaveOrUpdate(u);
 
             //Assert
             User user = repository.GetByUsername(u.Username);

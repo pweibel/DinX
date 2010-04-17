@@ -4,8 +4,8 @@ namespace DinX.Common.Repositories
 {
     public interface IUserRepository
     {
-        void Add(User user);
-        void Update(User user);
+        void SaveOrUpdate(User user);
+        void Delete(User user);
         User GetByUsername(string strUsername);
     }
 }

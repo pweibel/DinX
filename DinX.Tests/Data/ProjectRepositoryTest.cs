@@ -36,7 +36,7 @@ namespace DinX.Tests.Data
             p.ProductBacklog.Add(t3);
             
             // Act
-            repository.Add(p);
+            repository.SaveOrUpdate(p);
 
             // Assert
             Project p2 = repository.GetProject(p.Id);

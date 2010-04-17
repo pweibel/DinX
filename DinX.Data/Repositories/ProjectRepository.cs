@@ -8,7 +8,7 @@ namespace DinX.Data.Repositories
 {
     public class ProjectRepository : IProjectRepository
     {
-        public void Add(Project project)
+        public void SaveOrUpdate(Project project)
         {
             if (project == null) throw new ArgumentNullException("project");
 
@@ -16,13 +16,13 @@ namespace DinX.Data.Repositories
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Save(project);
+                    session.SaveOrUpdate(project);
                     transaction.Commit();
                 }
             }
         }
 
-        public void Update(Project project)
+        public void Delete(Project project)
         {
             if (project == null) throw new ArgumentNullException("project");
 
@@ -30,7 +30,7 @@ namespace DinX.Data.Repositories
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Update(project);
+                    session.Delete(project);
                     transaction.Commit();
                 }
             }
