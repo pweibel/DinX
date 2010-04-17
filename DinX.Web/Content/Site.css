@@ -76,7 +76,7 @@ fieldset
 	margin-top: 15px;
 }
 
-#search input
+#search input[type="text"]
 {
 	width: 400px;
 }

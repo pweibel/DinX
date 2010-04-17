@@ -1,3 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 
-<%= Html.TextBox("SearchString") %> <%= Html.ActionLink("Search", "Search", "Search") %>
+<% using (Html.BeginForm("Search", "Search")) {%>
+	<%= Html.TextBox("Query") %> <input type="submit" value="Search" />
+<% } %>

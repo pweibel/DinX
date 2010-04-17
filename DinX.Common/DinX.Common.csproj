@@ -57,12 +57,14 @@
     <Compile Include="Domain\Project.cs" />
     <Compile Include="Domain\Sprint.cs" />
     <Compile Include="Domain\User.cs" />
+    <Compile Include="Exceptions\SearchException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IProjectRepository.cs" />
     <Compile Include="Repositories\ISearchRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\ISprintRepository.cs" />
     <Compile Include="Services\IProjectService.cs" />
+    <Compile Include="Services\ISearchService.cs" />
     <Compile Include="Services\IUserService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

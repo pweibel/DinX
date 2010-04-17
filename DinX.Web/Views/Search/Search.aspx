@@ -7,5 +7,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2 id="pagetitle">Search results</h2>
-
+    
+    <ul>
+    <% foreach (var result in this.Model.Results) { %> <li><%= result.ToString() %></li><%} %>
+	</ul>
 </asp:Content>
