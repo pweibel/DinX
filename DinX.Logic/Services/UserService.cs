@@ -60,9 +60,12 @@ namespace DinX.Logic.Services
 
             if(user != null) throw new Exception("Username ist bereits vergeben.");
 
-            user = new User();
-            user.Username = strUsername;
-            user.Password = EncodePassword(strPassword);
+            user = new User
+                       {
+                           Username = strUsername, 
+                           Password = this.EncodePassword(strPassword)
+                       };
+
             if(!string.IsNullOrEmpty(strEMail)) user.EMail = strEMail;
 
             this.UserRepository.Add(user);

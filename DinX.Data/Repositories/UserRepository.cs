@@ -13,7 +13,7 @@ namespace DinX.Data.Repositories
         {
             if(user == null) throw new ArgumentNullException("user");
 
-            using(ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            using(ISession session = PersistenceManager.OpenSession())
             {
                 using(ITransaction transaction = session.BeginTransaction())
                 {
@@ -27,7 +27,7 @@ namespace DinX.Data.Repositories
         {
             if(user == null) throw new ArgumentNullException("user");
 
-            using(ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            using(ISession session = PersistenceManager.OpenSession())
             {
                 using(ITransaction transaction = session.BeginTransaction())
                 {
@@ -42,7 +42,7 @@ namespace DinX.Data.Repositories
             if(string.IsNullOrEmpty(strUsername)) throw new ArgumentNullException("strUsername");
 
             User user;
-            using(ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            using(ISession session = PersistenceManager.OpenSession())
             {
                 /*
                 ICriteria criteria = session.CreateCriteria(typeof(User))

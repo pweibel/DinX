@@ -12,7 +12,7 @@ namespace DinX.Data.Repositories
         {
             if (project == null) throw new ArgumentNullException("project");
 
-            using (ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            using (ISession session = PersistenceManager.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
@@ -26,7 +26,7 @@ namespace DinX.Data.Repositories
         {
             if (project == null) throw new ArgumentNullException("project");
 
-            using (ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            using (ISession session = PersistenceManager.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
@@ -40,7 +40,7 @@ namespace DinX.Data.Repositories
         {
             Project project;
 
-            using (ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            using (ISession session = PersistenceManager.OpenSession())
             {
                 project = session.Get<Project>(projectId);
             }
@@ -51,7 +51,7 @@ namespace DinX.Data.Repositories
         {
             IList<Project> projects;
 
-            using(ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            using(ISession session = PersistenceManager.OpenSession())
             {
                 projects = session.CreateQuery("FROM Project").List<Project>();
             }
@@ -65,7 +65,7 @@ namespace DinX.Data.Repositories
 
             IList<Project> projects;
 
-            using (ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            using (ISession session = PersistenceManager.OpenSession())
             {
                 projects = session.CreateQuery("FROM Project p WHERE p.Owner = :pOwner").SetEntity("pOwner", user).List<Project>();
             }
@@ -79,7 +79,7 @@ namespace DinX.Data.Repositories
 
             IList<Task> listTasks;
 
-            using(ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            using(ISession session = PersistenceManager.OpenSession())
             {
                 listTasks = session.CreateQuery("FROM Task t WHERE t.Project = :tProject").SetEntity("tProject", project).List<Task>();
             }
@@ -95,7 +95,7 @@ namespace DinX.Data.Repositories
 
             IList<Sprint> listSprints;
 
-            using(ISession session = PersistenceManager.PersistenceManager.OpenSession())
+            using(ISession session = PersistenceManager.OpenSession())
             {
                 listSprints = session.CreateQuery("FROM Sprint s WHERE s.Project = :sProject").SetEntity("sProject", project).List<Sprint>();
             }

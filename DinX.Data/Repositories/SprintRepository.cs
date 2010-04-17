@@ -14,7 +14,7 @@ namespace DinX.Data.Repositories
 		public Sprint GetCurrentSprint(Project project)
 		{
 			Sprint sprint;
-			using(ISession session = PersistenceManager.PersistenceManager.OpenSession())
+			using(ISession session = PersistenceManager.OpenSession())
 			{
 				ICriteria criteria = session.CreateCriteria(typeof(Sprint))
 							.Add(Restrictions.Eq("Project", project))
