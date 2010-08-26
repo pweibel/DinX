@@ -6,11 +6,11 @@
     </id>
     <property name="Title" not-null="true" />
     <property name="Description" />
-    <many-to-one name="Project" class="DinX.Common.Domain.Project" column="ProjectId" not-null="true"/>
-    <many-to-one name="Sprint" class="DinX.Common.Domain.Sprint" column="SprintId"/>
+    <many-to-one name="Project" class="Project" column="ProjectId" not-null="true"/>
+    <many-to-one name="Sprint" class="Sprint" column="SprintId"/>
     <bag name="Users" table="TaskMember">
       <key column="TaskId"/>
-      <many-to-many class="DinX.Common.Domain.User" column="UserId"/>
+      <many-to-many class="User" column="UserId"/>
     </bag>
   </class>
 </hibernate-mapping>

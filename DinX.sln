@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinX.Web", "DinX.Web\DinX.Web.csproj", "{867EB643-0C64-4059-B005-42556A256AE5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinX.Tests", "DinX.Tests\DinX.Tests.csproj", "{0E0AE2E0-D208-4738-8E42-DB2ACA08E5A1}"

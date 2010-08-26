@@ -5,18 +5,18 @@
       <generator class="guid" />
     </id>
     <property name="Name" not-null="true"/>
-    <many-to-one name="Owner" class="DinX.Common.Domain.User" cascade="All" not-null="true" lazy="false"/>
+    <many-to-one name="Owner" class="User" cascade="All" not-null="true" lazy="false"/>
     <bag name="Members" table="ProjectMember" lazy="false">
       <key column="ProjectId"/>
-      <many-to-many class="DinX.Common.Domain.User" column="UserId"/>
+      <many-to-many class="User" column="UserId"/>
     </bag>
     <bag name="ProductBacklog" inverse="true" cascade="all-delete-orphan">
       <key column="TaskId"/>
-      <one-to-many class="DinX.Common.Domain.Task"/>
+      <one-to-many class="Task"/>
     </bag>
     <bag name="Sprints" inverse="true" cascade="all-delete-orphan">
       <key column="SprintId"/>
-      <one-to-many class="DinX.Common.Domain.Sprint"/>
+      <one-to-many class="Sprint"/>
     </bag>
   </class>
 </hibernate-mapping>

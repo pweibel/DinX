@@ -9,13 +9,13 @@
     <property name="Firstname" />
     <property name="Lastname" />
     <property name="EMail" />
-    <bag name="Projects" table="ProjectMember">
+    <bag name="Projects" table="ProjectMember" inverse="true">
       <key column="UserId"/>
-      <many-to-many class="DinX.Common.Domain.Project" column="ProjectId"/>
+      <many-to-many class="Project" column="ProjectId"/>
     </bag>
-    <bag name="Tasks" table="TaskMember">
+    <bag name="Tasks" table="TaskMember" inverse="true">
       <key column="UserId"/>
-      <many-to-many class="DinX.Common.Domain.Task" column="TaskId"/>
+      <many-to-many class="Task" column="TaskId"/>
     </bag>
   </class>
 </hibernate-mapping>
