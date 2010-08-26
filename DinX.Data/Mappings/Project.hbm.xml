@@ -5,7 +5,7 @@
       <generator class="guid" />
     </id>
     <property name="Name" not-null="true"/>
-    <many-to-one name="Owner" class="User" cascade="All" not-null="true" lazy="false"/>
+    <many-to-one name="Owner" class="User" cascade="All" not-null="true" fetch="join"/>
     <bag name="Members" table="ProjectMember" lazy="false">
       <key column="ProjectId"/>
       <many-to-many class="User" column="UserId"/>
