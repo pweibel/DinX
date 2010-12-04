@@ -8,8 +8,23 @@ namespace DinX.Data.Helper
 {
     public class PersistenceManager
     {
+        #region Fields
         private static ISessionFactory _factory;
-        
+        #endregion
+
+        #region Properties
+        public static ISessionFactory Factory
+        {
+            get { return _factory; }
+        }
+
+        public static ISession CurrentSession
+        {
+            get { return Factory.GetCurrentSession(); }
+        }
+        #endregion
+
+        #region Publics
         public static ISession OpenSession()
         {
             if(_factory == null)
@@ -37,5 +52,6 @@ namespace DinX.Data.Helper
 
             return config;
         }
+        #endregion
     }
 }

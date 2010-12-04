@@ -1,5 +1,8 @@
-﻿using DinX.Data.Repositories;
-using DinX.Common.Domain;
+﻿using DinX.Common.Domain;
+using DinX.Data.Helper;
+using DinX.Data.Repositories;
+using NHibernate;
+using NHibernate.Context;
 using NUnit.Framework;
 
 namespace DinX.Tests.Data
@@ -7,6 +10,23 @@ namespace DinX.Tests.Data
 	[TestFixture]
 	public class ProjectRepositoryTest
 	{
+		#region SetUp and TearDown
+		[SetUp]
+		public void SetUp()
+		{
+			ISession session = PersistenceManager.OpenSession();
+			CurrentSessionContext.Bind(session);
+		}
+
+		[TearDown]
+		public void TearDown()
+		{
+			ISession session = CurrentSessionContext.Unbind(PersistenceManager.Factory);
+			session.Close();
+		}
+		#endregion
+
+		#region Tests
 		[Test]
 		public void TestCreate()
 		{
@@ -37,6 +57,7 @@ namespace DinX.Tests.Data
 			
 			// Act
 			repository.SaveOrUpdate(p);
+			PersistenceManager.CurrentSession.Flush();
 
 			// Assert
 			Project p2 = repository.GetProject(p.Id);
@@ -85,5 +106,6 @@ namespace DinX.Tests.Data
 			Assert.AreEqual(u.Username, proj.Owner.Username);
 			Assert.AreEqual(1, proj.Members.Count);
 		}
+		#endregion
 	}
 }

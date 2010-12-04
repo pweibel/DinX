@@ -2,7 +2,6 @@
 using DinX.Common.Domain;
 using DinX.Common.Repositories;
 using DinX.Data.Helper;
-using NHibernate;
 using NHibernate.Search;
 
 namespace DinX.Data.Repositories
@@ -15,12 +14,9 @@ namespace DinX.Data.Repositories
 
             IList result;
 
-            using(ISession session = PersistenceManager.OpenSession())
+            using(IFullTextSession ftSession = NHibernate.Search.Search.CreateFullTextSession(PersistenceManager.CurrentSession))
             {
-                using(IFullTextSession ftSession = NHibernate.Search.Search.CreateFullTextSession(session))
-                {
-                    result = ftSession.CreateFullTextQuery<Task>(strQuery).List();
-                }
+                result = ftSession.CreateFullTextQuery<Task>(strQuery).List();
             }
 
             return result;
