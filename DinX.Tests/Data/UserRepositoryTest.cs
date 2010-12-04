@@ -32,6 +32,7 @@ namespace DinX.Tests.Data
         public void TestAdd()
         {
             // Arrange
+            IUserRepository repository = new UserRepository();
             User u = new User
                          {
                              Username = "test",
@@ -42,9 +43,7 @@ namespace DinX.Tests.Data
                          };
 
             // Act
-            IUserRepository repository = new UserRepository();
             repository.SaveOrUpdate(u);
-            PersistenceManager.CurrentSession.Flush();
 
             // Assert
             User user = repository.GetByUsername(u.Username);

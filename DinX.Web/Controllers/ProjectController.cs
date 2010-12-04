@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using DinX.Common.Domain;
 using DinX.Common.Services;
 using DinX.Logic.Services;
+using DinX.Web.Attributes;
 using DinX.Web.Models;
 
 namespace DinX.Web.Controllers
@@ -23,6 +24,7 @@ namespace DinX.Web.Controllers
         }
         #endregion
 
+        [NHibernateSession]
         public ActionResult Index()
         {
             ProjectViewModel vmProject = new ProjectViewModel();
@@ -31,6 +33,7 @@ namespace DinX.Web.Controllers
             return View(vmProject);
         }
 
+        [NHibernateSession]
         public ActionResult Show(Guid id)
         {
             Project project = this.ProjectService.GetProject(id);
@@ -46,6 +49,7 @@ namespace DinX.Web.Controllers
 
         // POST: /Contact/Create
         [AcceptVerbs(HttpVerbs.Post)]
+        [NHibernateSession]
         public ActionResult Create(Project project)
         {
             if(this.ProjectService.CreateProject(project, this.User.Identity.Name))
@@ -56,6 +60,7 @@ namespace DinX.Web.Controllers
             return View("Create");
         }
 
+        [NHibernateSession]
         public ActionResult Edit(Guid id)
         {
             IProjectService service = new ProjectService();
@@ -65,6 +70,7 @@ namespace DinX.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
+        [NHibernateSession]
         public ActionResult Edit(Project project)
         {
             if(this.ProjectService.EditProject(project, this.User.Identity.Name))

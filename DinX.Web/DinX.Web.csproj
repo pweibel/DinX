@@ -105,6 +105,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\NHibernateSessionAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -168,6 +169,10 @@
     <ProjectReference Include="..\DinX.Common\DinX.Common.csproj">
       <Project>{8D23D475-4388-4CA3-9C11-16F558D0D86A}</Project>
       <Name>DinX.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DinX.Data\DinX.Data.csproj">
+      <Project>{290D22C4-FDF7-41F6-B1E2-8FEC9FA22366}</Project>
+      <Name>DinX.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\DinX.Logic\DinX.Logic.csproj">
       <Project>{A8B481CD-04D5-4430-ABB9-81C9ADCD7F91}</Project>

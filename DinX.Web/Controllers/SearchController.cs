@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using DinX.Common.Exceptions;
 using DinX.Common.Services;
 using DinX.Logic.Services;
+using DinX.Web.Attributes;
 using DinX.Web.Models;
 
 namespace DinX.Web.Controllers
@@ -25,6 +26,7 @@ namespace DinX.Web.Controllers
 
     	#region Methods
 		[AcceptVerbs(HttpVerbs.Post)]
+        [NHibernateSession]
 		public ActionResult Search(string query)
     	{
 			SearchViewModel model = new SearchViewModel();

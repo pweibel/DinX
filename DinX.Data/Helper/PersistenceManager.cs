@@ -15,7 +15,16 @@ namespace DinX.Data.Helper
         #region Properties
         public static ISessionFactory Factory
         {
-            get { return _factory; }
+            get
+            {
+                if(_factory == null)
+                {
+                    Configuration config = CreateConfiguration();
+                    _factory = config.BuildSessionFactory();
+                }
+
+                return _factory;
+            }
         }
 
         public static ISession CurrentSession
@@ -27,13 +36,7 @@ namespace DinX.Data.Helper
         #region Publics
         public static ISession OpenSession()
         {
-            if(_factory == null)
-            {
-                Configuration config = CreateConfiguration();
-                _factory = config.BuildSessionFactory();
-            }
-
-            return _factory.OpenSession();
+            return Factory.OpenSession();
         }
 
         public static Configuration CreateConfiguration()

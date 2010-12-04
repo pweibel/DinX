@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DinX.Common.Domain;
 using DinX.Common.Repositories;
 using DinX.Data.Helper;
+using NHibernate;
 
 namespace DinX.Data.Repositories
 {
@@ -12,26 +13,50 @@ namespace DinX.Data.Repositories
         {
             if (project == null) throw new ArgumentNullException("project");
 
-            PersistenceManager.CurrentSession.SaveOrUpdate(project);
+            ISession session = PersistenceManager.CurrentSession;
+            using(ITransaction trans = session.BeginTransaction())
+            {
+                session.SaveOrUpdate(project);
+                trans.Commit();
+            }
         }
 
         public void Delete(Project project)
         {
             if (project == null) throw new ArgumentNullException("project");
 
-             PersistenceManager.CurrentSession.Delete(project);
+            ISession session = PersistenceManager.CurrentSession;
+            using(ITransaction trans = session.BeginTransaction())
+            {
+                session.Delete(project);
+                trans.Commit();
+            }
         }
 
         public Project GetProject(Guid projectId)
         {
-            Project project = PersistenceManager.CurrentSession.Get<Project>(projectId);
+            Project project;
+
+            ISession session = PersistenceManager.CurrentSession;
+            using(ITransaction trans = session.BeginTransaction())
+            {
+                project = session.Get<Project>(projectId);
+                trans.Commit();
+            }
 
             return project;
         }
 
         public IList<Project> GetProjects()
         {
-            IList<Project> projects = PersistenceManager.CurrentSession.CreateQuery("FROM Project").List<Project>();
+            IList<Project> projects;
+
+            ISession session = PersistenceManager.CurrentSession;
+            using(ITransaction trans = session.BeginTransaction())
+            {
+                projects = session.CreateQuery("FROM Project").List<Project>();
+                trans.Commit();
+            }
 
             return projects;
         }
@@ -40,7 +65,14 @@ namespace DinX.Data.Repositories
         {
             if(user == null) throw new ArgumentNullException("user");
 
-            IList<Project> projects = PersistenceManager.CurrentSession.CreateQuery("FROM Project p WHERE p.Owner = :pOwner").SetEntity("pOwner", user).List<Project>();
+            IList<Project> projects;
+
+            ISession session = PersistenceManager.CurrentSession;
+            using(ITransaction trans = session.BeginTransaction())
+            {
+                projects = session.CreateQuery("FROM Project p WHERE p.Owner = :pOwner").SetEntity("pOwner", user).List<Project>();
+                trans.Commit();
+            }
 
             return projects;
         }
@@ -49,7 +81,14 @@ namespace DinX.Data.Repositories
         {
             if(project == null) throw new ArgumentNullException("project");
 
-            IList<Task> listTasks = PersistenceManager.CurrentSession.CreateQuery("FROM Task t WHERE t.Project = :tProject").SetEntity("tProject", project).List<Task>();
+            IList<Task> listTasks;
+
+            ISession session = PersistenceManager.CurrentSession;
+            using(ITransaction trans = session.BeginTransaction())
+            {
+                listTasks = session.CreateQuery("FROM Task t WHERE t.Project = :tProject").SetEntity("tProject", project).List<Task>();
+                trans.Commit();
+            }
 
             if(listTasks != null && listTasks.Count > 0) project.ProductBacklog = listTasks;
 
@@ -60,7 +99,14 @@ namespace DinX.Data.Repositories
         {
             if(project == null) throw new ArgumentNullException("project");
 
-            IList<Sprint> listSprints = PersistenceManager.CurrentSession.CreateQuery("FROM Sprint s WHERE s.Project = :sProject").SetEntity("sProject", project).List<Sprint>();
+            IList<Sprint> listSprints;
+
+            ISession session = PersistenceManager.CurrentSession;
+            using(ITransaction trans = session.BeginTransaction())
+            {
+                listSprints = session.CreateQuery("FROM Sprint s WHERE s.Project = :sProject").SetEntity("sProject", project).List<Sprint>();
+                trans.Commit();
+            }
 
             if(listSprints != null && listSprints.Count > 0) project.Sprints = listSprints;
 

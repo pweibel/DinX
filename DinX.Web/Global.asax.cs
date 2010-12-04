@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Routing;
+using DinX.Data.Helper;
 
 namespace DinX.Web
 {
@@ -23,6 +25,9 @@ namespace DinX.Web
         protected void Application_Start()
         {
             RegisterRoutes(RouteTable.Routes);
+
+            var factory = PersistenceManager.Factory;
+            if(factory == null) throw new InvalidOperationException("No connection to the database possible.");
         }
     }
 }

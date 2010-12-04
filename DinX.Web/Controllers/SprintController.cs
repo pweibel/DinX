@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using DinX.Common.Services;
 using DinX.Logic.Services;
+using DinX.Web.Attributes;
 using DinX.Web.Models;
 
 namespace DinX.Web.Controllers
@@ -22,13 +23,16 @@ namespace DinX.Web.Controllers
 		}
 		#endregion
 
-		public ActionResult Index(Guid id)
+        #region Publics
+        [NHibernateSession]
+        public ActionResult Index(Guid id)
         {
-			SprintViewModel model = new SprintViewModel();
-			model.Project = this.ProjectService.GetProject(id);
-			model.Current = this.ProjectService.GetCurrentSprint(model.Project);
+            SprintViewModel model = new SprintViewModel();
+            model.Project = this.ProjectService.GetProject(id);
+            model.Current = this.ProjectService.GetCurrentSprint(model.Project);
 
-			return View(model);
+            return View(model);
         }
+        #endregion
     }
 }

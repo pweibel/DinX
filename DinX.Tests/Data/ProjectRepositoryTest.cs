@@ -57,7 +57,6 @@ namespace DinX.Tests.Data
 			
 			// Act
 			repository.SaveOrUpdate(p);
-			PersistenceManager.CurrentSession.Flush();
 
 			// Assert
 			Project p2 = repository.GetProject(p.Id);
